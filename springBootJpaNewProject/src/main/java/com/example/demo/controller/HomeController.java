@@ -14,32 +14,20 @@ import com.example.demo.service.EmployeeService;
 public class HomeController {
 	@Autowired
 	private EmployeeService employeeService;
+
 	@GetMapping("/")
-	public String insertEmployee(Model model)
-	{
+	public String insertEmployee(Model model) {
 		Employee employee = new Employee();
 		employee.setName("Kishore");
 		employee.setDesingnation("Manager");
 		employee.setDepartment("Accounts");
 		employee.setExp(22);
-		
-	    Employee emp = 	employeeService.saveEmployee(employee);
-		String msg = "Employee "+emp.getName()+" with id "+emp.getId()+" is saved successfully";
+
+		Employee emp = employeeService.saveEmployee(employee);
+		String msg = "Employee " + emp.getName() + " with id " + emp.getId() + " is saved successfully";
 		model.addAttribute("employee", emp);
-		model.addAttribute("message",msg);
+		model.addAttribute("message", msg);
 		return "home";
 	}
-	
-	@PostMapping("/")
-	public String insertEmployee1()
-	{
-		Employee employee = new Employee();
-		employee.setName("Kishore");
-		employee.setDesingnation("Manager");
-		employee.setDepartment("Accounts");
-		employee.setExp(22);
-		
-	Employee emp = 	employeeService.saveEmployee(employee);
-		return "Employee "+emp.getName()+" with id "+emp.getId()+" is saved successfully";
-	}
+
 }
